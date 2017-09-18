@@ -1,5 +1,7 @@
 package com.webnatics.androidexam;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -48,4 +50,9 @@ public abstract class BaseActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+    public boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+    }
+
 }

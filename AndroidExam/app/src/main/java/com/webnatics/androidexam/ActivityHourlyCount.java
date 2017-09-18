@@ -2,6 +2,7 @@ package com.webnatics.androidexam;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -26,12 +27,12 @@ public class ActivityHourlyCount extends BaseActivity {
 
     @Subscribe
     public void onEventMainThread(Object event) {
-        if(pd!=null){
+        if (pd != null) {
             pd.dismiss();
         }
-        if(event instanceof EventHourlyRate) {
+        if (event instanceof EventHourlyRate) {
 
-            AppBarChart barChart = new AppBarChart(mBarChart,((EventHourlyRate) event).getHourlyRate());
+            AppBarChart barChart = new AppBarChart(mBarChart, ((EventHourlyRate) event).getHourlyRate());
             barChart.drawBarGraph();
 
         }
@@ -42,12 +43,15 @@ public class ActivityHourlyCount extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barchart);
-        setupActionBar(AppHelper.ANDROID_EXAM,AppHelper.HOURLY_RATE,true);
+        setupActionBar(AppHelper.ANDROID_EXAM, AppHelper.HOURLY_RATE, true);
         pd = new ProgressDialog(ActivityHourlyCount.this);
-        RetrofitRequest.getInstantiate(this).hourlyActivityCount(AppHelper.DATA_TYPE_HOURLY_RATE,AppHelper.DATE);
-        pd.setMessage("Loading......");
-        pd.show();
-
+        if (isNetworkConnected()) {
+            RetrofitRequest.getInstantiate(this).hourlyActivityCount(AppHelper.DATA_TYPE_HOURLY_RATE, AppHelper.DATE);
+            pd.setMessage("Loading......");
+            pd.show();
+        } else {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG);
+        }
         mBarChart = (BarChart) findViewById(R.id.chart);
 
 

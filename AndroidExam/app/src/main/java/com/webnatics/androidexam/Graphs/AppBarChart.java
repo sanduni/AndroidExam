@@ -50,6 +50,6 @@ public class AppBarChart {
         YAxis yAxisRight = drawingChart.getAxisRight();
         yAxisRight.setEnabled(false);
         drawingChart.setData(data);
-        drawingChart.animateY(5000);
+        drawingChart.animateY(3000);
     }
 }
