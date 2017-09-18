@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="monthly_sales_height">30dp</dimen>
+    <dimen name="monthly_sales_height_60">60dp</dimen>
+    <dimen name="monthly_sales_item_height">50dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="padding_20">20dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+</resources>

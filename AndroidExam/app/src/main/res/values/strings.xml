@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidExam</string>
+    <string name="monthly_sales">Monthly Sales</string>
+    <string name="hourly_activity_count">Hourly Activity Count</string>
+    <string name="month">Month</string>
+    <string name="sales">Sales</string>
+    <string name="listviewlabel">Month | Sales</string>
+</resources>
